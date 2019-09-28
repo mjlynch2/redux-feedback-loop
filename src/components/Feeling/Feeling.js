@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import RadioButtons from '../RadioButtons/RadioButtons';
+import NextButton from '../NextButton/NextButton';
 
 // DESCRIPTIVE COMMENT
 class Feeling extends Component {
@@ -31,9 +32,8 @@ class Feeling extends Component {
                     I'm very stressed.
                     <RadioButtons />
                     I'm feeling great!
+                    <NextButton isValid={this.state.isValid} handleClick={this.handleClick} />
                 </span>
-                <br/>
-                <button id="nextButton" disabled={!this.state.isValid} onClick={this.handleClick}>Next</button>
             </div>
         )
     }

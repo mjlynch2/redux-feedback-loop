@@ -19,6 +19,8 @@ const feedbackReducer = (state = feedback, action) => {
     switch (action.type) {
         case 'SET_FEEDBACK':
             return {...state, [action.keyName]: action.payload};
+        case 'CLEAR_FEEDBACK':
+            return state = feedback;
         default:
             return state;
     }

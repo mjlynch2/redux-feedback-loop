@@ -8,7 +8,8 @@ class Thanks extends Component {
     }
 
     handleNewFeedback = () => {
-        this.setState({redirectHome: true})
+        this.props.dispatch({type: 'CLEAR_FEEDBACK'});
+        this.setState({redirectHome: true});
     }
 
     render() {

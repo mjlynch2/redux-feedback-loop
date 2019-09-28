@@ -3,13 +3,17 @@ import { connect } from 'react-redux';
 
 class Feeling extends Component {
 
+    state = {
+        isValid: false
+    }
+
     handleClick = () => {
         this.props.history.push('/understanding');
     }
 
     handleChange = (event) => {
-        console.log(event.target.value);
-        
+        this.setState({isValid: true});
+        this.props.dispatch({ type: 'SET_FEEDBACK', payload: event.target.value, keyName: 'feeling' })
     }
 
     render(){
@@ -26,7 +30,7 @@ class Feeling extends Component {
                     I'm feeling great!
                 </span>
                 <br/>
-                <button id="nextButton" onClick={this.handleClick}>Next</button>
+                <button id="nextButton" disabled={!this.state.isValid} onClick={this.handleClick}>Next</button>
             </div>
         )
     }

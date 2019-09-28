@@ -9,7 +9,6 @@ import Comment from '../Comment/Comment';
 import Thanks from '../Thanks/Thanks';
 import Admin from '../Admin/Admin';
 
-
 class App extends Component {
   render() {
     return (

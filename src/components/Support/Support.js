@@ -1,15 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import RadioButtons from '../RadioButtons/RadioButtons';
 
 class Support extends Component {
 
+    state = { 
+        support: ''
+    }
     handleClick = () => {
+        this.props.dispatch({ type: 'SET_FEEDBACK', payload: this.state.support, keyName: 'support' })
         this.props.history.push('/comments');
     }
 
     handleChange = (event) => {
-        // this.setState({ isValid: true });
-        this.props.dispatch({ type: 'SET_FEEDBACK', payload: event.target.value, keyName: 'support' })
+        this.setState({ support: event.target.value });
     }
 
     render() {
@@ -18,11 +22,7 @@ class Support extends Component {
                 <h2>How well are you being supported?</h2>
                 <span>
                     I'm feel abandoned.
-                    <input type="radio" name="type" value={1} onChange={(event) => this.handleChange(event)} />
-                    <input type="radio" name="type" value={2} onChange={(event) => this.handleChange(event)} />
-                    <input type="radio" name="type" value={3} onChange={(event) => this.handleChange(event)} />
-                    <input type="radio" name="type" value={4} onChange={(event) => this.handleChange(event)} />
-                    <input type="radio" name="type" value={5} onChange={(event) => this.handleChange(event)} />
+                    <RadioButtons />
                     I feel supported!
                 </span>
                 <br />

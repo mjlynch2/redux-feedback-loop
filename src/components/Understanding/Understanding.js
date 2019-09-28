@@ -1,28 +1,34 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import RadioButtons from '../RadioButtons/RadioButtons';
 
+// This is the Understanding view of the feedback form. Users can select a value from 1-5 based on how well they are understanding the content. A value must be selected in order to continue with the form.
 class Understanding extends Component {
 
+    state = {
+        understanding: '',
+        isValid: false
+    }
+
     handleClick = () => {
+        this.props.dispatch({ type: 'SET_FEEDBACK', payload: this.state.feeling, keyName: 'understanding' })
         this.props.history.push('/support');
     }
 
     handleChange = (event) => {
-        // this.setState({ isValid: true });
-        this.props.dispatch({ type: 'SET_FEEDBACK', payload: event.target.value, keyName: 'understanding' })
+        this.setState({
+            understanding: event.target.value,
+            isValid: true
+        });
     }
 
     render() {
         return (
             <div>
                 <h2>How well are you understanding the content?</h2>
-                <span>
+                <span onChange={(event) => this.handleChange(event)}>
                     I'm totally lost.
-                    <input type="radio" name="type" value={1} onChange={(event) => this.handleChange(event)} />
-                    <input type="radio" name="type" value={2} onChange={(event) => this.handleChange(event)} />
-                    <input type="radio" name="type" value={3} onChange={(event) => this.handleChange(event)} />
-                    <input type="radio" name="type" value={4} onChange={(event) => this.handleChange(event)} />
-                    <input type="radio" name="type" value={5} onChange={(event) => this.handleChange(event)} />
+                    <RadioButtons />
                     I've got this!
                 </span>
                 <br />

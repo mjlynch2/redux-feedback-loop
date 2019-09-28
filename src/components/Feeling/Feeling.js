@@ -1,33 +1,35 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import RadioButtons from '../RadioButtons/RadioButtons';
 
 // DESCRIPTIVE COMMENT
 class Feeling extends Component {
 
     state = {
+        feeling: '',
         isValid: false
     }
 
     handleClick = () => {
+        this.props.dispatch({ type: 'SET_FEEDBACK', payload: this.state.feeling, keyName: 'feeling' })
         this.props.history.push('/understanding');
     }
 
     handleChange = (event) => {
-        this.setState({isValid: true});
-        this.props.dispatch({ type: 'SET_FEEDBACK', payload: event.target.value, keyName: 'feeling' })
+        this.setState({
+            feeling: event.target.value,
+            isValid: true
+        });
+        
     }
 
     render(){
         return (
             <div>
                 <h2>How are you feeling today?</h2>
-                <span> 
+                <span onChange={(event) => this.handleChange(event)}> 
                     I'm very stressed.
-                    <input type="radio" name="type" value={1} onChange={(event) => this.handleChange(event)} />
-                    <input type="radio" name="type" value={2} onChange={(event) => this.handleChange(event)} />
-                    <input type="radio" name="type" value={3} onChange={(event) => this.handleChange(event)} />
-                    <input type="radio" name="type" value={4} onChange={(event) => this.handleChange(event)} />
-                    <input type="radio" name="type" value={5} onChange={(event) => this.handleChange(event)} />
+                    <RadioButtons />
                     I'm feeling great!
                 </span>
                 <br/>

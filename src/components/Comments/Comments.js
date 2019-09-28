@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import NextButton from '../NextButton/NextButton';
 
 class Comments extends Component {
     state = {
-        comments: ''
+        comments: '',
+        isValid: false
     }
 
     handleChange = (event) => {
-        this.setState({comments: event.target.value})
+        this.setState({
+            comments: event.target.value,
+            isValid: true
+        });
     }
 
     handleClick = () => {
@@ -20,7 +25,7 @@ class Comments extends Component {
             <div>
                 <h2>Any comments you want to leave?</h2>
                 <textarea onChange={this.handleChange} />
-                <button id="nextButton" onClick={this.handleClick}>Next</button>
+                <NextButton isValid={this.state.isValid} handleClick={this.handleClick} />
             </div>
         )
     }

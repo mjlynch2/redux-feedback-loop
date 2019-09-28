@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import RadioButtons from '../RadioButtons/RadioButtons';
+import NextButton from '../NextButton/NextButton';
+
 
 // This is the Understanding view of the feedback form. Users can select a value from 1-5 based on how well they are understanding the content. A value must be selected in order to continue with the form.
 class Understanding extends Component {
@@ -30,9 +32,8 @@ class Understanding extends Component {
                     I'm totally lost.
                     <RadioButtons />
                     I've got this!
+                    <NextButton isValid={this.state.isValid} handleClick={this.handleClick} />
                 </span>
-                <br />
-                <button id="nextButton" onClick={this.handleClick}>Next</button>
             </div>        
         )
     }

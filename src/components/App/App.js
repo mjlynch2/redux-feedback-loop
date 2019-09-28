@@ -5,7 +5,7 @@ import Feeling from '../Feeling/Feeling';
 import Understanding from '../Understanding/Understanding';
 import Support from '../Support/Support';
 import Review from '../Review/Review';
-import Comment from '../Comment/Comment';
+import Comments from '../Comments/Comments';
 import Thanks from '../Thanks/Thanks';
 import Admin from '../Admin/Admin';
 
@@ -22,10 +22,10 @@ class App extends Component {
         <Route exact path="/" component={Feeling} />
         <Route exact path="/understanding" component={Understanding} />
         <Route exact path="/support" component={Support} />
-        <Route exact path="/comment" component={Comment} />
+        <Route exact path="/comments" component={Comments} />
         <Route exact path="/review" component={Review} />
         <Route exact path="/thanks" component={Thanks} />
-        <Route exact path="/admin" component={Admin} />
+        {/* <Route exact path="/admin" component={Admin} /> */}
       </div>
       </Router>
     );

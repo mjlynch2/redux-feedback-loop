@@ -1,10 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import axios from 'axios';
 
 class Review extends Component {
 
     handleClick = () => {
-        this.props.history.push('/thanks');
+        axios.post('/feedback', this.props.reduxState.feedbackReducer)
+        .then(() => {
+            this.props.history.push('/thanks');
+        }).catch((error) => {
+            console.log('Error in POST:', error);
+            alert('Error in POST:', error);
+        })
     }
 
     render() {

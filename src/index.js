@@ -11,7 +11,7 @@ let feedback = {
     feeling: '',
     understanding: '',
     support: '',
-    comment: ''
+    comments: ''
 }
 
 // reducer that stores the state of each piece of feedback, using bracket notation to assign the payload to the corresponding key

@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-class Comment extends Component {
+class Comments extends Component {
     state = {
-        comment: ''
+        comments: ''
     }
 
     handleChange = (event) => {
-        this.setState({comment: event.target.value})
+        this.setState({comments: event.target.value})
     }
 
     handleClick = () => {
-        this.props.dispatch({type: 'SET_FEEDBACK', payload: this.state.comment, keyName: 'comment'})
+        this.props.dispatch({type: 'SET_FEEDBACK', payload: this.state.comments, keyName: 'comments'})
         this.props.history.push('/review');
     }
 
@@ -26,4 +26,4 @@ class Comment extends Component {
     }
 }
 
-export default connect()(Comment);
+export default connect()(Comments);

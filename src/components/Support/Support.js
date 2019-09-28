@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 class Support extends Component {
 
     handleClick = () => {
-        this.props.history.push('/comment');
+        this.props.history.push('/comments');
     }
 
     handleChange = (event) => {

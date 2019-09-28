@@ -11,7 +11,7 @@ class Understanding extends Component {
     }
 
     handleClick = () => {
-        this.props.dispatch({ type: 'SET_FEEDBACK', payload: this.state.feeling, keyName: 'understanding' })
+        this.props.dispatch({ type: 'SET_FEEDBACK', payload: this.state.understanding, keyName: 'understanding' })
         this.props.history.push('/support');
     }
 

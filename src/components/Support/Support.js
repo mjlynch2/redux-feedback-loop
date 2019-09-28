@@ -20,7 +20,7 @@ class Support extends Component {
         return (
             <div>
                 <h2>How well are you being supported?</h2>
-                <span>
+                <span onChange={(event) => this.handleChange(event)}>
                     I'm feel abandoned.
                     <RadioButtons />
                     I feel supported!

@@ -1,0 +1,13 @@
+table {
+  border-collapse: collapse;
+  max-width: 650px;
+  margin: auto;
+}
+th, td {
+  /* padding: 0.25rem; */
+  text-align: center;
+  border: 1px solid gray;
+}
+tbody tr:nth-child(odd) {
+  background: #ccc;
+}

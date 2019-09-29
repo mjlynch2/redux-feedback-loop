@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import DeleteButton from '../DeleteButton/DeleteButton';
+import './Admin.css'
 
 class Admin extends Component {
 
@@ -29,12 +30,14 @@ class Admin extends Component {
                 {/* <pre>{JSON.stringify(this.state.feedbackResults)}</pre> */}
                 <table>
                     <thead>
-                        <th>Feeling</th>
-                        <th>Understanding</th>
-                        <th>Support</th>
-                        <th>Comments</th>
-                        <th>Flag for Review?</th>
-                        <th>Delete</th>
+                        <tr>
+                            <th>Feeling</th>
+                            <th>Understanding</th>
+                            <th>Support</th>
+                            <th>Comments</th>
+                            <th>Flag for Review?</th>
+                            <th>Delete</th>
+                        </tr>
                     </thead>
                     <tbody>
                         {this.state.feedbackResults.map((item) => 

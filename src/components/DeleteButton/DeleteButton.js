@@ -5,7 +5,7 @@ import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 class DeleteButton extends Component {
     render() {
         return (
-            <Button variant="text" color="default" onClick={this.props.handleClick}>
+            <Button variant="text" color="default" onClick={this.props.handleDelete}>
                 <DeleteForeverIcon />
             </Button>
         )

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import DeleteButton from '../DeleteButton/DeleteButton';
+import ReviewButton from '../ReviewButton/ReviewButton';
 import './Admin.css'
 
 class Admin extends Component {
@@ -10,8 +11,12 @@ class Admin extends Component {
         feedbackResults: []
     }
 
-    handleClick = () => {
+    handleDelete = () => {
         console.log('Clicked!');
+    }
+
+    handleReview = () => {
+        console.log(this.state.feedbackResults.flagged, 'clicked the flag')
     }
 
     componentDidMount = () => {
@@ -46,8 +51,8 @@ class Admin extends Component {
                                 <td>{item.understanding}</td>
                                 <td>{item.support}</td>
                                 <td>{item.comments}</td>
-                                <td>{item.flagged}</td>
-                                <td><DeleteButton handleClick={this.handleClick} /></td>
+                                <td>{item.flagged ? 'Flagged for review' : <ReviewButton handleReview={this.handleReview} />}</td>
+                                <td><DeleteButton handleDelete={this.handleDelete} /></td>
                             </tr>
                         )}
                     </tbody>

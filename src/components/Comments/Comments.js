@@ -2,19 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import NextButton from '../NextButton/NextButton';
 import CommentsTextArea from '../CommentsTextArea/CommentsTextArea';
+import BackButton from '../BackButton/BackButton';
 
 class Comments extends Component {
     state = {
-        comments: '',
-        isValid: false
+        comments: this.props.reduxState.feedbackReducer.comments,
     }
 
     handleChange = (event) => {
-        if(event.target.value === '') {
-            this.setState({isValid: false})
-        } else {
-            this.setState({ isValid: true })
-        }
         this.setState({
             comments: event.target.value
         });
@@ -29,11 +24,19 @@ class Comments extends Component {
         return (
             <div>
                 <h2>Any comments you want to leave?</h2>
-                <CommentsTextArea handleChange={this.handleChange} />
-                <NextButton isValid={this.state.isValid} handleClick={this.handleClick} />
+                <CommentsTextArea handleChange={this.handleChange} value={this.state.comments}/>
+                <BackButton back='/support'/>
+                <NextButton 
+                    isValid={this.state.comments === '' ? false : true}
+                    handleClick={this.handleClick} 
+                />
             </div>
         )
     }
 }
 
-export default connect()(Comments);
+const putReduxStateOnProps = (reduxState) => ({
+    reduxState
+})
+
+export default connect(putReduxStateOnProps)(Comments);

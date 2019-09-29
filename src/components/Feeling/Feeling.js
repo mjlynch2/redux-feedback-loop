@@ -7,8 +7,7 @@ import NextButton from '../NextButton/NextButton';
 class Feeling extends Component {
 
     state = {
-        feeling: '',
-        isValid: false
+        feeling: this.props.reduxState.feedbackReducer.feeling,
     }
 
     handleClick = () => {
@@ -19,7 +18,6 @@ class Feeling extends Component {
     handleChange = (event) => {
         this.setState({
             feeling: event.target.value,
-            isValid: true
         });
         
     }
@@ -30,13 +28,20 @@ class Feeling extends Component {
                 <h2>How are you feeling today?</h2>
                 <span onChange={(event) => this.handleChange(event)}> 
                     I'm very stressed.
-                    <RadioButtons />
+                    <RadioButtons value={this.state.feeling} handleChange={this.handleChange} />
                     I'm feeling great!
-                    <NextButton isValid={this.state.isValid} handleClick={this.handleClick} />
+                    <br />
+                    <NextButton 
+                        isValid={this.state.feeling === '' ? false : true} 
+                        handleClick={this.handleClick} 
+                    />
                 </span>
             </div>
         )
     }
 }
+const putReduxStateOnProps = (reduxState) => ({
+    reduxState
+})
 
-export default connect()(Feeling);
+export default connect(putReduxStateOnProps)(Feeling);

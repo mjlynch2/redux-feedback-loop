@@ -6,6 +6,7 @@ class CommentsTextArea extends Component {
         return (
             <TextField
                 placeholder="What's on your mind?"
+                value={this.props.value}
                 multiline
                 fullWidth
                 required

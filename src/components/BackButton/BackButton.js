@@ -1,33 +1,37 @@
 import React, { Component } from 'react';
-import Button from '@material-ui/core/Button';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+import { withRouter } from 'react-router-dom';
 
 const styles = {
     button: {
-        float: 'right'
-    }
+        float: 'left'
+    },
 };
 
-class NextButton extends Component {
+class BackButton extends Component {
+
     render() {
         const { classes } = this.props;
         return (
+            <>
+                <br/>
                 <Button 
                     variant="contained" 
                     className={classes.button} 
-                    disabled={!this.props.isValid} 
-                    color="primary" 
-                    onClick={this.props.handleClick}
+                    color="default" 
+                    onClick={() => {this.props.history.push(this.props.back)}}
                 >
-                    Next
+                    Back
                 </Button>
+            </>
         )
     }
 }
 
-
-NextButton.propTypes = {
+BackButton.propTypes = {
     classes: PropTypes.object.isRequired,
 };
-export default withStyles(styles)(NextButton);
+
+export default withRouter(withStyles(styles)(BackButton));

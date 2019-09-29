@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import BackButton from '../BackButton/BackButton';
 
 class Review extends Component {
 
@@ -23,6 +24,7 @@ class Review extends Component {
                 <p>Understanding: {understanding}</p>
                 <p>Support: {support}</p>
                 <p>Comments: {comments}</p>
+                <BackButton back='/comments'/>
                 <button id="nextButton" onClick={this.handleClick}>Submit</button>
             </div>
         )

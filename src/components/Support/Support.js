@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import RadioButtons from '../RadioButtons/RadioButtons';
 import NextButton from '../NextButton/NextButton';
+import BackButton from '../BackButton/BackButton';
 
 
 class Support extends Component {
 
     state = { 
-        support: '',
-        isValid: false
+        support: this.props.reduxState.feedbackReducer.support,
     }
     handleClick = () => {
         this.props.dispatch({ type: 'SET_FEEDBACK', payload: this.state.support, keyName: 'support' })
@@ -18,7 +18,6 @@ class Support extends Component {
     handleChange = (event) => {
         this.setState({
             support: event.target.value,
-            isValid: true
         });
     }
 
@@ -28,13 +27,21 @@ class Support extends Component {
                 <h2>How well are you being supported?</h2>
                 <span onChange={(event) => this.handleChange(event)}>
                     I'm feel abandoned.
-                    <RadioButtons />
+                    <RadioButtons value={this.state.support} handleChange={this.handleChange} />
                     I feel supported!
-                    <NextButton isValid={this.state.isValid} handleClick={this.handleClick} />
+                    <BackButton back='/understanding' />
+                    <NextButton 
+                        isValid={this.state.support === '' ? false : true}
+                        handleClick={this.handleClick} 
+                    />
                 </span>
             </div>
         )
     }
 }
 
-export default connect()(Support);
+const putReduxStateOnProps = (reduxState) => ({
+    reduxState
+})
+
+export default connect(putReduxStateOnProps)(Support);

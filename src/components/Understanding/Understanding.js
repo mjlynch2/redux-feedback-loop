@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import RadioButtons from '../RadioButtons/RadioButtons';
 import NextButton from '../NextButton/NextButton';
+import BackButton from '../BackButton/BackButton';
 
 
 // This is the Understanding view of the feedback form. Users can select a value from 1-5 based on how well they are understanding the content. A value must be selected in order to continue with the form.
 class Understanding extends Component {
 
     state = {
-        understanding: '',
-        isValid: false
+        understanding: this.props.reduxState.feedbackReducer.understanding,
     }
 
     handleClick = () => {
@@ -22,6 +22,7 @@ class Understanding extends Component {
             understanding: event.target.value,
             isValid: true
         });
+        return event.target.value;
     }
 
     render() {
@@ -30,13 +31,21 @@ class Understanding extends Component {
                 <h2>How well are you understanding the content?</h2>
                 <span onChange={(event) => this.handleChange(event)}>
                     I'm totally lost.
-                    <RadioButtons />
+                    <RadioButtons value={this.state.understanding} handleChange={this.handleChange}/>
                     I've got this!
-                    <NextButton isValid={this.state.isValid} handleClick={this.handleClick} />
+                    <BackButton back='/'/>
+                    <NextButton
+                        isValid={this.state.understanding === '' ? false : true}
+                        handleClick={this.handleClick}
+                    />
                 </span>
             </div>        
         )
     }
 }
 
-export default connect()(Understanding);
+const putReduxStateOnProps = (reduxState) => ({
+    reduxState
+})
+
+export default connect(putReduxStateOnProps)(Understanding);

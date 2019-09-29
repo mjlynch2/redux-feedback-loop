@@ -65,8 +65,8 @@ class Admin extends Component {
                                 <td>{item.understanding}</td>
                                 <td>{item.support}</td>
                                 <td>{item.comments}</td>
-                                <td>{item.flagged ? 'Flagged for review' : <ReviewButton handleReview={this.handleReview(item.id)} />}</td>
-                                <td><DeleteButton handleDelete={this.handleDelete(item.id)} /></td>
+                                <td>{item.flagged ? 'Flagged for review' : <ReviewButton handleReview={this.handleReview} id={item.id}/>}</td>
+                                <td><DeleteButton handleDelete={this.handleDelete} id={item.id} /></td>
                             </tr>
                         )}
                     </tbody>

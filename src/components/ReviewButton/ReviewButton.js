@@ -5,7 +5,7 @@ import FlagIcon from '@material-ui/icons/Flag';
 class ReviewButton extends Component {
     render() {
         return (
-            <Button variant="text" color="default" onClick={this.props.handleReview}>
+            <Button variant="text" color="default" onClick={() => {this.props.handleReview(this.props.id)}}>
                 <FlagIcon />
             </Button>
         )

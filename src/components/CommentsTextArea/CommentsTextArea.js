@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import TextField from '@material-ui/core/TextField';
 
+// Material UI component for a text field on the comments view
 class CommentsTextArea extends Component {
     render() {
         return (

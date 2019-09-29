@@ -3,6 +3,7 @@ import DeleteButton from '../DeleteButton/DeleteButton';
 import ReviewButton from '../ReviewButton/ReviewButton';
 import './AdminFeedbackTable.css';
 
+// Displays all of the feedbacks in a table. It receives the array of feedback objects as a prop from Admin
 class AdminFeedbackTable extends Component {
 
     render() {

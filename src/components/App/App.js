@@ -9,6 +9,7 @@ import Comments from '../Comments/Comments';
 import Thanks from '../Thanks/Thanks';
 import Admin from '../Admin/Admin';
 
+// App component handles routing to all of the other components. Note that to access the admin page, one must manually enter into the address bar
 class App extends Component {
   render() {
     return (

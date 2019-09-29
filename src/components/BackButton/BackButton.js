@@ -4,6 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import { withRouter } from 'react-router-dom';
 
+// Material-UI button component that routes to the previous page. Previously was using the goBack() function but that was causing a full page refresh. Now receives a prop that specifies the route for which the page will return.
 const styles = {
     button: {
         margin: 10

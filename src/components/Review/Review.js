@@ -4,8 +4,10 @@ import axios from 'axios';
 import BackButton from '../BackButton/BackButton';
 import SubmitButton from '../SubmitButton/SubmitButton';
 
+// This is the Review view of the feedback form. Users can review their feedback given thus far, then submit it if all is good, or go back to make changes.
 class Review extends Component {
 
+    // On submit, POST the feedback to the server, then navigate to the next view
     handleClick = () => {
         axios.post('/feedback', this.props.reduxState.feedbackReducer)
         .then(() => {
@@ -32,6 +34,7 @@ class Review extends Component {
     }
 }
 
+// Pull down all the feedback values stored in redux to send over to the server
 const putReduxStateOnProps = (reduxState) => ({
     reduxState
 })

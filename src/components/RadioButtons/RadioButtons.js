@@ -4,6 +4,7 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 
+// Material UI component that handles the display of radio buttons for the feeling, understanding, and support views
 const styles = {
     root: {
         display: 'inline'

@@ -3,10 +3,15 @@ table {
   max-width: 650px;
   margin: auto;
 }
+
+thead {
+  background: #ccc;
+}
+
 th, td {
   text-align: center;
   border: 1px solid gray;
 }
-tbody tr:nth-child(odd) {
-  background: #ccc;
+tbody tr:nth-child(even) {
+  background: #f2f2f2;
 }

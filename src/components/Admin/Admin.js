@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import axios from 'axios';
-import DeleteButton from '../DeleteButton/DeleteButton';
-import ReviewButton from '../ReviewButton/ReviewButton';
-import './Admin.css'
+import AdminFeedbackTable from '../AdminFeedbackTable/AdminFeedbackTable';
 
 class Admin extends Component {
 
@@ -46,34 +43,14 @@ class Admin extends Component {
         return (
             <div>
                 <h2>Admin</h2>
-                {/* <pre>{JSON.stringify(this.state.feedbackResults)}</pre> */}
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Feeling</th>
-                            <th>Understanding</th>
-                            <th>Support</th>
-                            <th>Comments</th>
-                            <th>Flag for Review?</th>
-                            <th>Delete</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {this.state.feedbackResults.map((item) => 
-                            <tr key={item.id}>
-                                <td>{item.feeling}</td>
-                                <td>{item.understanding}</td>
-                                <td>{item.support}</td>
-                                <td>{item.comments}</td>
-                                <td>{item.flagged ? 'Flagged for review' : <ReviewButton handleReview={this.handleReview} id={item.id}/>}</td>
-                                <td><DeleteButton handleDelete={this.handleDelete} id={item.id} /></td>
-                            </tr>
-                        )}
-                    </tbody>
-                </table>
+                <AdminFeedbackTable 
+                    feedbackResults={this.state.feedbackResults} 
+                    handleReview={this.handleReview}
+                    handleDelete={this.handleDelete}
+                />
             </div>
         )
     }
 }
 
-export default connect()(Admin);
+export default Admin;

@@ -21,7 +21,29 @@ class Admin extends Component {
         return (
             <div>
                 <h2>Admin</h2>
-                <pre>{JSON.stringify(this.state.feedbackResults)}</pre>
+                {/* <pre>{JSON.stringify(this.state.feedbackResults)}</pre> */}
+                <table>
+                    <thead>
+                        <th>Feeling</th>
+                        <th>Understanding</th>
+                        <th>Support</th>
+                        <th>Comments</th>
+                        <th>Flag for Review?</th>
+                        <th>Delete</th>
+                    </thead>
+                    <tbody>
+                        {this.state.feedbackResults.map((item) => 
+                            <tr key={item.id}>
+                                <td>{item.feeling}</td>
+                                <td>{item.understanding}</td>
+                                <td>{item.support}</td>
+                                <td>{item.comments}</td>
+                                <td>{item.flagged}</td>
+                                <td>delete button placeholder</td>
+                            </tr>
+                        )}
+                    </tbody>
+                </table>
             </div>
         )
     }

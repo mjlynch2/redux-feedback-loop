@@ -6,7 +6,7 @@ import { withRouter } from 'react-router-dom';
 
 const styles = {
     button: {
-        float: 'left'
+        margin: 10
     },
 };
 

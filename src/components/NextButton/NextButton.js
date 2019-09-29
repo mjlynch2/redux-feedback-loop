@@ -5,7 +5,7 @@ import { withStyles } from '@material-ui/core/styles';
 
 const styles = {
     button: {
-        float: 'right'
+        margin: 10
     }
 };
 

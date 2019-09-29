@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import SubmitButton from '../SubmitButton/SubmitButton';
 
 class Thanks extends Component {
     state = {
@@ -20,7 +21,7 @@ class Thanks extends Component {
         return (
             <div>
                 <h2>Thank You!</h2>
-                <button id="newFeedback" onClick={this.handleNewFeedback}>Leave New Feedback</button>
+                <SubmitButton handleClick={this.handleNewFeedback} textToDisplay="Leave New Feedback" />
             </div>
         )
     }

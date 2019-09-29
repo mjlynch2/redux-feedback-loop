@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import BackButton from '../BackButton/BackButton';
+import SubmitButton from '../SubmitButton/SubmitButton';
 
 class Review extends Component {
 
@@ -25,7 +26,7 @@ class Review extends Component {
                 <p>Support: {support}</p>
                 <p>Comments: {comments}</p>
                 <BackButton back='/comments'/>
-                <button id="nextButton" onClick={this.handleClick}>Submit</button>
+                <SubmitButton handleClick={this.handleClick} textToDisplay="Submit"/>
             </div>
         )
     }

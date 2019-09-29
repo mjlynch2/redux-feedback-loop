@@ -26,7 +26,7 @@ class Support extends Component {
             <div>
                 <h2>How well are you being supported?</h2>
                 <span onChange={(event) => this.handleChange(event)}>
-                    I'm feel abandoned.
+                    I feel abandoned.
                     <RadioButtons value={this.state.support} handleChange={this.handleChange} />
                     I feel supported!
                     <BackButton back='/understanding' />

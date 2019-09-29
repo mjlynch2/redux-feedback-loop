@@ -29,7 +29,7 @@ class Feeling extends Component {
                 <span onChange={(event) => this.handleChange(event)}> 
                     I'm very stressed.
                     <RadioButtons value={this.state.feeling} handleChange={this.handleChange} />
-                    I'm feeling great!
+                    I feeling great!
                     <br />
                     <NextButton 
                         isValid={this.state.feeling === '' ? false : true} 

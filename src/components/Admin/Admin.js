@@ -11,20 +11,34 @@ class Admin extends Component {
         feedbackResults: []
     }
 
-    handleDelete = () => {
-        console.log('Clicked!');
-    }
-
-    handleReview = () => {
-        console.log(this.state.feedbackResults.flagged, 'clicked the flag')
-    }
-
     componentDidMount = () => {
+        this.getAllFeedback();
+    }
+
+    getAllFeedback = () => {
         axios.get('/feedback')
-        .then((response) => {
-            this.setState({feedbackResults: response.data})
+            .then((response) => {
+                this.setState({ feedbackResults: response.data })
+            }).catch((error) => {
+                console.log('Error in GET:', error)
+            })
+    }
+
+    handleDelete = (id) => {
+        axios.delete(`/feedback/${id}`)
+            .then(() => {
+                this.getAllFeedback();
+            }).catch((error) => {
+                console.log('Error in DELETE:', error)
+            })
+    }
+
+    handleReview = (id) => {
+        axios.put(`/feedback/${id}`)
+        .then(() => {
+            this.getAllFeedback();
         }).catch((error) => {
-            console.log('Error in GET:', error)
+            console.log('Error in PUT:', error)
         })
     }
 
@@ -51,8 +65,8 @@ class Admin extends Component {
                                 <td>{item.understanding}</td>
                                 <td>{item.support}</td>
                                 <td>{item.comments}</td>
-                                <td>{item.flagged ? 'Flagged for review' : <ReviewButton handleReview={this.handleReview} />}</td>
-                                <td><DeleteButton handleDelete={this.handleDelete} /></td>
+                                <td>{item.flagged ? 'Flagged for review' : <ReviewButton handleReview={this.handleReview(item.id)} />}</td>
+                                <td><DeleteButton handleDelete={this.handleDelete(item.id)} /></td>
                             </tr>
                         )}
                     </tbody>

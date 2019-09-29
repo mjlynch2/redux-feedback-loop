@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import DeleteButton from '../DeleteButton/DeleteButton';
 
 class Admin extends Component {
 
     state = {
         feedbackResults: []
+    }
+
+    handleClick = () => {
+        console.log('Clicked!');
     }
 
     componentDidMount = () => {
@@ -39,7 +44,7 @@ class Admin extends Component {
                                 <td>{item.support}</td>
                                 <td>{item.comments}</td>
                                 <td>{item.flagged}</td>
-                                <td>delete button placeholder</td>
+                                <td><DeleteButton handleClick={this.handleClick} /></td>
                             </tr>
                         )}
                     </tbody>
